@@ -1,0 +1,12 @@
+.app-header {
+  grid-area: h;
+}
+
+.app-header img {
+  width: 30px;
+  z-index: 1;
+}
+
+.app-header {
+  background-color: lightgoldenrodyellow;
+}

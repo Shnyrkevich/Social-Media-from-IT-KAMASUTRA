@@ -1,23 +1,34 @@
 import React from 'react';
+import './navigation.css';
 
 function Navigation() {
 
   return (
     <nav className='app-navigation'>
-      <div>
-        Profile
+      <div className='navigation-link-container'>
+        <a className='navigation-link'>
+          Profile
+        </a>
       </div>
-      <div>
-        Messages
+      <div className='navigation-link-container'>
+        <a className='navigation-link'>
+          Messages
+        </a>
       </div>
-      <div>
-        News
+      <div className='navigation-link-container'>
+        <a className='navigation-link'>
+          News
+        </a> 
       </div>
-      <div>
-        Music
+      <div className='navigation-link-container'>
+        <a className='navigation-link'>
+          Music
+        </a>
       </div>
-      <div>
-        Settings
+      <div className='navigation-link-container'>
+        <a className='navigation-link'>
+          Settings
+        </a>
       </div>
     </nav>
   );
