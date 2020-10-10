@@ -1,0 +1,49 @@
+.app-wrapper {
+  width: 100vw;
+  display: grid;
+
+  grid-template-areas: 
+  'h h'
+  'n c'
+  ;
+
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  /* grid-gap: 10px; */
+}
+
+.app-header {
+  grid-area: h;
+}
+
+.app-header img {
+  width: 30px;
+  z-index: 1;
+}
+
+.app-header {
+  width: 20px;
+  background-color: lightgoldenrodyellow;
+}
+
+.app-navigation {
+  grid-area: n;
+  background-color: lightgray;
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  grid-area: c;
+  background-color: lightpink;
+}
+
+.app-main-header-img {
+  width: 100%;
+  height: 120px;
+}
+
+.app-main-header-img img {
+  width: 100%;
+  height: 100%;
+}
