@@ -6,6 +6,13 @@
   align-items: center;
 }
 
+.post-information {
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+}
+
 .post-user_avatar {
   width: 100px;
   height: 100px;

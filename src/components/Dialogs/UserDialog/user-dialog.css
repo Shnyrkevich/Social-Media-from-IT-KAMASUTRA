@@ -1,0 +1,11 @@
+.user-dialog {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 3px;
+  margin-bottom: 10px;
+}
+
+.user-dialog_name {
+  margin-left: 5px;
+}

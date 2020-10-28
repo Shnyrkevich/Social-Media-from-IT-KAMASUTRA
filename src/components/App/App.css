@@ -1,5 +1,6 @@
 .app-wrapper {
-  width: 80vw;
+  width: 100vw;
+  min-height: 100vh;
   display: grid;
   font-size: 10px;
   grid-template-areas: 
@@ -10,4 +11,11 @@
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
   /* grid-gap: 10px; */
+}
+
+.content {
+  grid-area: c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

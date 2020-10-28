@@ -1,0 +1,39 @@
+.users {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.users-title {
+  width: 95%;
+  text-align: left;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.users-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 95%;
+}
+
+.users-btn_show-more {
+  min-width: 120px;
+  height: 30px;
+  text-transform: uppercase;
+  background-color: inherit;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid black;
+  transition: all .5s;
+  margin-bottom: 20px;
+}
+
+.users-btn_show-more:hover {
+  background-color: black;
+  color: white;
+}
+

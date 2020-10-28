@@ -1,0 +1,13 @@
+.pagination-container {
+  margin: 10px auto 10px auto;
+  font-size: 15px;
+}
+
+.pagination-item {
+  margin: 0 5px 0 5px;
+  cursor: pointer;
+}
+
+.pagination-container .active-page {
+  text-decoration: underline;
+}

@@ -1,16 +1,41 @@
 import React from 'react';
 import './posts.css';
-import NewPost from './NewPost/NewPost';
 import Post from './Post/Post';
+import { useRef } from 'react';
 
-function Posts() {
+function Posts({ posts, addNewPost}) {
+  console.log(posts)
+  let textAreaRef = useRef();
+
+  function addNewPostButtonListener() {
+    if ( textAreaRef.current.value ) {
+      addNewPost(textAreaRef.current.value);
+      textAreaRef.current.value = '';
+    }
+  }
+  
+  let postsArray = posts.map((el) => <Post post={el.text} key={el.id}/>);
 
   return (
     <div className='posts-container'>
         Posts
-        <NewPost /> 
+        <div className='posts-new_post'>
+          <textarea
+            ref={textAreaRef}
+            className='new_post-text'
+            placeholder='Input Something'
+          /> 
+          <div className='btn-container'>
+            <button
+              onClick={ addNewPostButtonListener }
+              className='new-post-btn add_new_post-btn'
+            >
+              Add Post
+            </button>
+          </div>
+        </div>
         <div className='posts'>
-          <Post />
+          { postsArray }
         </div>
     </div>
   );

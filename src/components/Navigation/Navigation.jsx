@@ -1,34 +1,40 @@
 import React from 'react';
 import './navigation.css';
+import { NavLink } from 'react-router-dom';
 
 function Navigation() {
 
   return (
     <nav className='app-navigation'>
       <div className='navigation-link-container'>
-        <a className='navigation-link'>
+        <NavLink className='navigation-link' to='/profile'>
           Profile
-        </a>
+        </NavLink>
       </div>
       <div className='navigation-link-container'>
-        <a className='navigation-link'>
+        <NavLink className='navigation-link' to='/dialogs'>
           Messages
-        </a>
+        </NavLink>
       </div>
       <div className='navigation-link-container'>
-        <a className='navigation-link'>
+        <NavLink className='navigation-link' to='/users'>
+          Users
+        </NavLink>
+      </div>
+      <div className='navigation-link-container'>
+        <NavLink className='navigation-link' to='/news'>
           News
-        </a> 
+        </NavLink> 
       </div>
       <div className='navigation-link-container'>
-        <a className='navigation-link'>
+        <NavLink className='navigation-link' to='/music'>
           Music
-        </a>
+        </NavLink>
       </div>
       <div className='navigation-link-container'>
-        <a className='navigation-link'>
+        <NavLink className='navigation-link' to='/settings'>
           Settings
-        </a>
+        </NavLink>
       </div>
     </nav>
   );

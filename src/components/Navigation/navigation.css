@@ -1,6 +1,6 @@
 .app-navigation {
   grid-area: n;
-  background-color: lightgray;
+  background-color: #99CCFF;
 }
 
 .navigation-link-container { 
@@ -11,6 +11,11 @@
   cursor: pointer;
 }
 
+.navigation-link-container .active {
+  text-decoration: underline;
+  color: black;
+}
+
 .navigation-link-container:last-child {
   margin-top: 10px;
 }
@@ -18,4 +23,9 @@
 .navigation-link-container:hover {
   color: black;
   text-decoration: wavy;
+}
+
+.navigation-link {
+  text-decoration: none;
+  color: inherit;
 }
