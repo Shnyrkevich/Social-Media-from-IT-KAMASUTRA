@@ -1,69 +1,55 @@
 import React from 'react';
-import * as axios from 'axios';
 import { useEffect } from 'react';
-import preloader from '../../assets/images/preloader.svg';
+import Preloader from '../Preloader/Preloader';
 import Users from './users';
-import { actionCreator } from '../../state/actions';
 import { connect } from 'react-redux';
+import { 
+  getUsersThunkCreator,
+  getUsersWhenPageToggaledThunkCreator,
+  toggleFollowUserStatus
+} from '../../state/thunks/users-thunk';
 
 function UsersLogicContainer(props) {
-  function subscribeToUser(id, status) {
-    props.subscribeAction(id, status);
-  }
 
   useEffect(() => {
     if (!props.users.length) {
-      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${props.currentPage}&count=${props.pageSize}`)
-      .then(response => {
-        props.setUsers(response.data.items);
-        props.setTotalUsersCount(response.data.totalCount > 21 ? 21 : response.data.totalCount);
-      })
+      props.setUsers(props.currentPage, props.pageSize);
     }
   }, [props.users]);
 
   function paginationClick(p) {
-    props.changeCurrentPage(p);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${props.pageSize}`)
-    .then(response => {
-      props.setUsers(response.data.items);
-    })
+    props.setUsersWhenPageToggaled(p, props.pageSize);
   }
 
   return (
     <>
-      { props.users.length ? <Users 
-        subscribeToUser={subscribeToUser}
+      { !props.isFetching ? <Users 
+        toggleFollowStatus={props.toggleFollowStatus}
         paginationClick={paginationClick}
         users={props.users}
         pageSize={props.pageSize}
         totalUserCount={props.totalUserCount}
         currentPage={props.currentPage}
-      /> : <img src={preloader} className='preloader'/> }
+      /> : <Preloader /> }
     </>
   )
 } 
 
 let mapStateToProps = (state) => {
   return {
-    users: state.usersReducer.users,
-    pageSize: state.usersReducer.pageSize,
-    totalUserCount: state.usersReducer.totalUserCount,
-    currentPage: state.usersReducer.currentPage,
+    users: state.usersReducer.usersPage.users,
+    pageSize: state.usersReducer.usersPage.pageSize,
+    totalUserCount: state.usersReducer.usersPage.totalUserCount,
+    currentPage: state.usersReducer.usersPage.currentPage,
+    isFetching: state.usersReducer.usersPage.isFetching
   }
 };
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    subscribeAction: (id, status) => {
-      if (status) {
-        dispatch(actionCreator().unfollowUser(id));
-      } else {
-        dispatch(actionCreator().followUser(id));
-      }
-    },
-    setUsers: (users) => dispatch(actionCreator().setUsers(users)),
-    changeCurrentPage: (pageNumber) => dispatch(actionCreator().changeCurrentUsersPage(pageNumber)),
-    setTotalUsersCount: (usersQuantity) => dispatch(actionCreator().setUsersTotalCount(usersQuantity)),
+    toggleFollowStatus: (id, status, btn) => dispatch(toggleFollowUserStatus(id, status, btn)),
+    setUsersWhenPageToggaled: (currentPage, pageSize) => dispatch(getUsersWhenPageToggaledThunkCreator(currentPage, pageSize)),
+    setUsers: (currentPage, pageSize) => dispatch(getUsersThunkCreator(currentPage, pageSize))
   }
 }
 

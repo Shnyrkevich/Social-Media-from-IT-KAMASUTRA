@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: column;
   grid-area: c;
-  background-color: lightpink;
+  background-color: white;
+  width: 100%;
 }
 
 .app-main-header-img {

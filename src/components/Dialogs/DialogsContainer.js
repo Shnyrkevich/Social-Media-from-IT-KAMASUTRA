@@ -1,18 +1,16 @@
 import Dialogs from './Dialogs';
-import { createNewMessage } from '../../state/store';
 import { connect } from 'react-redux';
+import { actionCreator } from '../../state/actions';
 
 let mapStateToProps = (state) => {
-  console.log(state)
   return {
     dialogsPage: state.dialogsReducer.dialogsPage
   }
 };
 
 let mapDispatchToProps = (dispatch) => {
-  console.log(dispatch(createNewMessage('lol')));
   return {
-    sendNewMessage: (text) => dispatch(createNewMessage(text)),
+    sendNewMessage: (text) => dispatch(actionCreator().createNewMessage(text)),
   }
 }
 

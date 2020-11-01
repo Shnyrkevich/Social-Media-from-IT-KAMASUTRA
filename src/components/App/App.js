@@ -1,8 +1,8 @@
 import React from 'react';
 import DialogsContainer from '../Dialogs/DialogsContainer';
-import Header from '../Header/Header';
+import HeaderContainer from '../Header/HeaderContainer';
 import Navigation from '../Navigation/Navigation';
-import Profile from '../Profile/MainContent';
+import ProfileContainer from '../Profile/ProfileContainer';
 import './App.css';
 import { Route } from 'react-router-dom';
 import UsersContainer from '../Users/UsersContainer';
@@ -10,10 +10,10 @@ import UsersContainer from '../Users/UsersContainer';
 function App() {
   return (
     <div className="app-wrapper">
-      <Header />
+      <HeaderContainer />
       <Navigation />
       <div className='content'>
-        <Route exact render={() => <Profile />} path='/profile'/>
+        <Route render={() => <ProfileContainer />} path='/profile/:userId?'/>
         <Route exact render={() => <DialogsContainer />} path='/dialogs'/>
         <Route exact render={() => <UsersContainer />} path='/users'/>
       </div>

@@ -47,7 +47,7 @@ const dialogsReducer = (state = initialState, action) => {
             ...state.dialogsPage.dialogsMessages,
             {
               id: state.dialogsPage.dialogsMessages.length + 1,
-              message: action.message
+              message: action.data
             }
           ],
         }

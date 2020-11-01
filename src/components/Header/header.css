@@ -15,3 +15,18 @@
 .app-header {
   background-color: #66CCCC;
 }
+
+.header-information {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  height: 80%;
+  justify-content: center;
+  align-items: left;
+}
+
+.header-information_email,
+.header-information_login {
+  font-size: 15px;
+  margin: 0 auto 5px auto;
+}

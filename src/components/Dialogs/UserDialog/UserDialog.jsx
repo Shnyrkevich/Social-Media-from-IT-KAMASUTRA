@@ -2,8 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './user-dialog.css';
 
-
-
 function UserDialog({ name }) {
 
   return (

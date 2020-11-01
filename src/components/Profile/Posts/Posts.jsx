@@ -3,18 +3,17 @@ import './posts.css';
 import Post from './Post/Post';
 import { useRef } from 'react';
 
-function Posts({ posts, addNewPost}) {
-  console.log(posts)
+function Posts(props) {
   let textAreaRef = useRef();
 
   function addNewPostButtonListener() {
     if ( textAreaRef.current.value ) {
-      addNewPost(textAreaRef.current.value);
+      props.addNewPost(textAreaRef.current.value);
       textAreaRef.current.value = '';
     }
   }
   
-  let postsArray = posts.map((el) => <Post post={el.text} key={el.id}/>);
+  let postsArray = props.posts.map((el) => <Post post={el.text} key={el.id}/>);
 
   return (
     <div className='posts-container'>

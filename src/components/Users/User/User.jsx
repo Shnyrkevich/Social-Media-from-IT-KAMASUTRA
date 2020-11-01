@@ -1,19 +1,24 @@
 import React from 'react';
 import './user.css';
+import { NavLink } from 'react-router-dom';
+import { usersApi } from '../../../api/api';
 
-function User({ user, subscribeAction }) {
-  function followButton() {
-    subscribeAction(user.id, user.followStatus);
-  }
-
+function User({ user, toggleFollowStatus}) {
   return (
     <div className='users_user'>
       <div className='user_container'>
         <div className='user-status'>
           <div className='user-status_icon'>
-            <img src={user.photos.small ? user.photos.small : 'https://cdn0.iconfinder.com/data/icons/set-ui-app-android/32/8-512.png'} />
+            <NavLink className="user-link" to={`/profile/${user.id}`}>
+              <img src={user.photos.small ? user.photos.small : 'https://cdn0.iconfinder.com/data/icons/set-ui-app-android/32/8-512.png'} />
+            </NavLink>
           </div>
-          <button onClick={followButton}  className='user-status_btn'>{ user.followed ? 'follow' : 'unfollow' }</button>
+            <button
+              onClick={ (ev) => toggleFollowStatus(user.id, user.followed, ev.target) } 
+              className='user-status_btn'
+            >
+              { user.followed ? 'follow' : 'unfollow' }
+            </button>
         </div>
         <div className='user-information'>
           <div className="user-information_container">
