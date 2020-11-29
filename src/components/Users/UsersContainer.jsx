@@ -8,6 +8,8 @@ import {
   getUsersWhenPageToggaledThunkCreator,
   toggleFollowUserStatus
 } from '../../state/thunks/users-thunk';
+import RedirectHoc from '../RedirectHoc/RedirectHoc';
+import { compose } from 'redux';
 
 function UsersLogicContainer(props) {
 
@@ -41,7 +43,7 @@ let mapStateToProps = (state) => {
     pageSize: state.usersReducer.usersPage.pageSize,
     totalUserCount: state.usersReducer.usersPage.totalUserCount,
     currentPage: state.usersReducer.usersPage.currentPage,
-    isFetching: state.usersReducer.usersPage.isFetching
+    isFetching: state.usersReducer.usersPage.isFetching,
   }
 };
 
@@ -53,6 +55,7 @@ let mapDispatchToProps = (dispatch) => {
   }
 }
 
-let UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersLogicContainer);
-
-export default UsersContainer;
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  RedirectHoc
+)(UsersLogicContainer);

@@ -29,7 +29,13 @@ export const usersApi = {
 
 export const profileApi = {
   getUserProfile: (userId) => instanceWithoutKey.get(`profile/${userId}`).then(res => res.data),
+  getUserStatus: (userId) => instanceWithoutKey.get(`profile/status/${userId}`).then(res => res.data),
+  putUserStatus: (status) => instanceWithKey.put(`profile/status`, { status: status }).then(res => res.data),
 };
 
-export const authRequest = () => instanceWithoutKey.get('auth/me').then(res => res.data);
-
+export const authApi = {
+  putLogin: (email, password, rememberMe = false) => instanceWithKey.post('auth/login', { email, password, rememberMe })
+    .then(res => res.data),
+  logOut: () => instanceWithKey.delete('auth/login').then(res => res.data),
+  authRequest: () => instanceWithoutKey.get('auth/me').then(res => res.data),
+}

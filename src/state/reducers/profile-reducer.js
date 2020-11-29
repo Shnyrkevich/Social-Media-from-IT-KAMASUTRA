@@ -18,6 +18,7 @@ const initialState = {
         text: 'Lol',
       },
     ],
+    status: null
   }
 };
 
@@ -53,6 +54,15 @@ const profileReducer = (state = initialState, action) => {
         profilePage: {
           ...state.profilePage,
           profile: action.data,
+        }
+      }
+    }
+    case types.SET_USER_STATUS: {
+      return {
+        ...state,
+        profilePage: {
+          ...state.profilePage,
+          status: action.data
         }
       }
     }

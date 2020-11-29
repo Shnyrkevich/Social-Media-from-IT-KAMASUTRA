@@ -1,15 +1,45 @@
 import './dialogs.css';
-import React, { useRef } from 'react';
+import React from 'react';
 import UserDialog from './UserDialog/UserDialog';
 import Dialog from './Dialog/Dialog';
+import { Field, reduxForm } from 'redux-form';
+import { SomeTextarea } from '../form-controller/form-controller';
+import { maxLengthValidate, required, minLengthValidate } from '../../utils/validators/validators';
+
+const maxLengthValidate1000 = maxLengthValidate(1000);
+const minLengthValidate3 = minLengthValidate(3);
+
+const NewMessageForm = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit} className="dialogs-container-dialogs-form">
+      <div className='posts-new_post'>
+        <Field
+          name='messageTextarea'
+          component={SomeTextarea('textarea')}
+          className='new_message-text'
+          placeholder='Start Conversation'
+          validate={[ maxLengthValidate1000, minLengthValidate3, required ]}
+        /> 
+        <div className='btn-container'>
+          <button
+            type='submit'
+            className='new-post-btn add_new_post-btn'
+          >
+            Add Message
+          </button>
+        </div>
+      </div>
+    </form>
+  );
+}
+
+const NewMessageFormWithRedux = reduxForm({ form: 'new_message_form' })(NewMessageForm);
 
 function Dialogs({ dialogsPage, sendNewMessage}) {
-  let textAreaRef = useRef();
-
-  function sendNewMessageButton () {
-    if ( textAreaRef.current.value ) {
-      sendNewMessage(textAreaRef.current.value);
-      textAreaRef.current.value='';
+  function sendNewMessageButton(formData) {
+    if ( formData.messageTextarea ) {
+      sendNewMessage(formData.messageTextarea);
+      console.log(formData);
     }
   }
 
@@ -26,22 +56,7 @@ function Dialogs({ dialogsPage, sendNewMessage}) {
           {
             dialogsPage.dialogsMessages.map((el) => <Dialog key={el.id} text={el.message} />)
           }
-          <div className='posts-new_post'>
-            <textarea
-              ref={textAreaRef}
-              className='new_message-text'
-              placeholder='Start Conversation'
-            > 
-            </textarea>
-            <div className='btn-container'>
-              <button
-                onClick={ sendNewMessageButton }
-                className='new-post-btn add_new_post-btn'
-              >
-                Add Message
-              </button>
-            </div>
-          </div>
+          <NewMessageFormWithRedux onSubmit={sendNewMessageButton}/>
         </div>
       </div>
     </div>

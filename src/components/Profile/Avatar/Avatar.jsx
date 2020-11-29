@@ -1,5 +1,6 @@
 import React from 'react';
 import './avatar.css';
+import UserStatus from './UserStatus';
 
 function Avatar(props) {
   return (
@@ -11,8 +12,9 @@ function Avatar(props) {
         <div className='app-main-avatar_full-name'>
           {props.fullName}
         </div>
-        <div className='app-main-avatar_about-me'>
-          {props.aboutMe}
+        <UserStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
+        <div className="app-main-information_about-me">
+          { props.aboutMe ? props.aboutMe : null }
         </div>
         <div className='app-main-avatar_job-status'>
           {props.lookingForAJob ? `Looking for a job! ${props.lookingForAJobDescription}` : null}

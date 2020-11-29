@@ -1,4 +1,5 @@
 export const types = {
+  SET_INITIOLIZED: 'SET_INITIOLIZED',
   ADD_NEW_POST: 'ADD_NEW_POST',
   SEND_NEW_MESSAGE: 'SEND_NEW_MESSAGE',
   SET_USERS: 'SET_USERS',
@@ -10,6 +11,7 @@ export const types = {
   SET_ACTIVE_PROFILE: 'SET_ACTIVE_PROFILE',
   CHANGE_PROFILE_FETCHING: 'CHANGE_PROFILE_FETCHING',
   SET_AUTHENTICATION: 'SET_AUTHENTICATION',
+  SET_USER_STATUS: 'SET_USER_STATUS',
 }
 
 
@@ -26,6 +28,8 @@ export const actionCreator = () => {
     createNewMessage: (message) => ({ type: types.SEND_NEW_MESSAGE, data: message }),
     createNewPost: (post) => ({ type: types.ADD_NEW_POST, data: post }),
     changeProfileFetchingStatus: (status) => ({ type: types.CHANGE_PROFILE_FETCHING, data: status }),
-    setAuthentication: (id, login, email) => ({ type: types.SET_AUTHENTICATION, data: {id, login, email} }),
+    setAuthentication: (id, login, email, isAuth) => ({ type: types.SET_AUTHENTICATION, data: {id, login, email, isAuth} }),
+    setUserStatus: (status) => ({ type: types.SET_USER_STATUS, data: status }),
+    setInitiolized: () => ({type: types.SET_INITIOLIZED}),
   }
 };

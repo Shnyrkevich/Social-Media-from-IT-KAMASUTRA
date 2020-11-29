@@ -26,7 +26,8 @@
 }
 
 .header-information_email,
-.header-information_login {
+.header-information_login,
+.app-header_sigh-in {
   font-size: 15px;
   margin: 0 auto 5px auto;
 }

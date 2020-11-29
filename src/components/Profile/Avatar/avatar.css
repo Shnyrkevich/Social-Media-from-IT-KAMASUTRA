@@ -28,9 +28,15 @@
 }
 
 .app-main-information-container {
+  width: 90%;
   font-size: 1rem;
   margin-left: 10px;
   margin-top: 10px;
   display: flex;
   flex-direction: column;
+}
+
+.app-main-avatar_status {
+  height: 20px;
+  width: 100%;
 }
